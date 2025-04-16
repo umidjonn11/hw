@@ -21,8 +21,7 @@ model Orders{
   id Int @id @default(autoincrement())
   user_id Int
   User Users @relation(fields: [user_id],references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  order_date DateTime @default(now())
   status order_status
   total Decimal
   order_item Order_items[]
