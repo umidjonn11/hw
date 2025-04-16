@@ -16,20 +16,20 @@ export class CategoriesService {
     return this.prisma.categories.findMany({});
   }
 
-  findOne(id: number) {
+ async findOne(id: number) {
     return this.prisma.categories.findUnique({
       where: { id },
     });
   }
 
-  update(id: number, data: UpdateCategoryDto) {
+ async update(id: number, data: UpdateCategoryDto) {
     return this.prisma.categories.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+ async remove(id: number) {
     return this.prisma.categories.delete({
       where: { id },
     });

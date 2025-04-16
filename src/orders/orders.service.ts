@@ -6,33 +6,33 @@ import { PrismaService } from 'prisma/prisma.service';
 @Injectable()
 export class OrdersService {
   constructor(private prisma: PrismaService) {}
-  create(data: CreateOrderDto) {
+ async create(data: CreateOrderDto) {
     return this.prisma.orders.create({
       data,
     });
   }
 
-  findAll() {
+ async findAll() {
     return this.prisma.orders.findMany({
       include: { User: true,},
     });
   }
 
-  findOne(id: number) {
+async  findOne(id: number) {
     return this.prisma.orders.findUnique({
       where: { id },
       include: { User: true},
     });
   }
 
-  update(id: number, data: UpdateOrderDto) {
+ async update(id: number, data: UpdateOrderDto) {
     return this.prisma.orders.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return this.prisma.orders.delete({
       where:{id},
     });

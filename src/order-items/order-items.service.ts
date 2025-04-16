@@ -19,21 +19,21 @@ export class OrderItemsService {
     });
   }
 
-  findOne(id: number) {
+ async findOne(id: number) {
     return this.prisma.order_items.findUnique({
       where: { id },
       include: { Order: true, Products: true },
     });
   }
 
-  update(id: number, data: UpdateOrderItemDto) {
+  async update(id: number, data: UpdateOrderItemDto) {
     return this.prisma.order_items.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return this.prisma.order_items.delete({
       where: { id },
     });
