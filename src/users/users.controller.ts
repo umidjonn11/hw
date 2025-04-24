@@ -3,6 +3,8 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { RolesGuard } from 'src/security/role.guard';
+import { UserRoles } from 'src/constants/user-role.enum';
+import { Roles } from 'src/decorators/roles.decorator';
 
 @Controller('users')
 export class UsersController {
@@ -10,6 +12,7 @@ export class UsersController {
 
   @Post()
   @UseGuards(RolesGuard)
+  @Roles(UserRoles.admin)
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
